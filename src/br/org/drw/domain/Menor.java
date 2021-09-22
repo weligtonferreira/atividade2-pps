@@ -3,32 +3,29 @@ package br.org.drw.domain;
 import java.time.LocalDate;
 import java.util.Random;
 
-public class Menor {
-	private int id;
-	private String nome;
-	private String sobrenome;
-	private LocalDate dataNasc;
+public class Menor extends Pessoa {
 	private int matricula;
-	
-	public Menor(String nome, String sobrenome) {
-		this.nome = nome;
-		this.sobrenome = sobrenome;
-		this.dataNasc = LocalDate.now();
-        Random randomizador = new Random();
-        int numeroRandomizado = randomizador.nextInt(100);
-        this.id = numeroRandomizado;
+	private Profissional profissionalResponsavel;
+
+	public Menor(String nome, String sobrenome, LocalDate dataNasc, Endereco endereco, int matricula) {
+		super(nome, sobrenome, dataNasc, endereco);
+		Random randomizador = new Random();
+		this.matricula = randomizador.nextInt(100);
 	}
 
-	public Menor vazio() {
-		return new Menor("", "");
+	public int getMatricula() {
+		return matricula;
 	}
 
-	public Menor(String nome, String sobrenome, LocalDate dataNasc, int matricula) {
-		this.nome = nome;
-		this.sobrenome = sobrenome;
-		this.dataNasc = dataNasc;
-        Random randomizador = new Random();
-        int numeroRandomizado = randomizador.nextInt(100);
-        this.id = numeroRandomizado;
+	public void setMatricula(int matricula) {
+		this.matricula = matricula;
+	}
+
+	public Profissional getProfissionalResponsavel() {
+		return profissionalResponsavel;
+	}
+
+	public void setProfissionalResponsavel(Profissional profissionalResponsavel) {
+		this.profissionalResponsavel = profissionalResponsavel;
 	}
 }
