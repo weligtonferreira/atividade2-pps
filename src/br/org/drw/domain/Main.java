@@ -37,5 +37,15 @@ public class Main {
 		mensalidade.confirmarPagamento(creche.getMensalidades());
 
 		creche.imprimirMensalidades();
+		
+		System.out.println("\nNovo pagamento:");
+		Pagamento pagamentoAntes = new PagamentoAVista(120.00);
+		pagamentoAntes.imprimirValor();
+
+		System.out.println("\nPagamento gerado com base no anterior:");
+		Pagamento pagamentoAgora = pagamentoAntes.clone();
+		pagamentoAgora.imprimirValor();
+		pagamentoAgora.setValor(110.00);
+		pagamentoAgora.imprimirValor();
 	}
 }

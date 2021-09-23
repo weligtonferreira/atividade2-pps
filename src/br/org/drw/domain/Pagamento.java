@@ -20,4 +20,6 @@ public abstract class Pagamento {
     public void setValor(double valor) {
         this.valor = valor;
     }
+    
+    public abstract Pagamento clone();
 }

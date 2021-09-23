@@ -6,8 +6,17 @@ public class PagamentoAVista extends Pagamento {
         super(valor);
     }
 
-    @Override
+    public PagamentoAVista(PagamentoAVista pagamentoAVista) {
+    	super(pagamentoAVista.getValor());
+	}
+
+	@Override
     public void imprimir() {
         this.imprimirValor();
     }
+
+	@Override
+	public Pagamento clone() {
+		return new PagamentoAVista(this);
+	}
 }

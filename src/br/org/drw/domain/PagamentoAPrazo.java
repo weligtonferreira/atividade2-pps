@@ -8,8 +8,17 @@ public class PagamentoAPrazo extends Pagamento {
         this.numCartao = numCartao;
     }
 
-    @Override
+    public PagamentoAPrazo(PagamentoAPrazo pagamentoAPrazo) {
+    	super(pagamentoAPrazo.getValor());
+	}
+
+	@Override
     public void imprimir() {
         this.imprimirValor();
     }
+
+	@Override
+	public Pagamento clone() {
+		return new PagamentoAPrazo(this);
+	}
 }
