@@ -1,5 +1,7 @@
 package br.org.drw.domain;
 
+import br.org.drw.domain.visitor.Visitor;
+
 public abstract class Pagamento {
     private double valor;
 
@@ -8,10 +10,12 @@ public abstract class Pagamento {
     }
 
     public final void imprimirValor() {
-        System.out.println("O valor é: " + this.getValor());
+        System.out.println("Valor: " + this.getValor());
     };
 
     public abstract void imprimir();
+
+    public abstract void accept(Visitor visitor);
 
     public double getValor() {
         return valor;

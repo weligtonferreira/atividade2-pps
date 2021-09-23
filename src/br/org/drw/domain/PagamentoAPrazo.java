@@ -1,5 +1,7 @@
 package br.org.drw.domain;
 
+import br.org.drw.domain.visitor.Visitor;
+
 public class PagamentoAPrazo extends Pagamento {
     private String numCartao;
 
@@ -17,7 +19,12 @@ public class PagamentoAPrazo extends Pagamento {
         this.imprimirValor();
     }
 
-	@Override
+    @Override
+    public void accept(Visitor visitor) {
+        visitor.imprimirPagamento(this);
+    }
+
+    @Override
 	public Pagamento clone() {
 		return new PagamentoAPrazo(this);
 	}

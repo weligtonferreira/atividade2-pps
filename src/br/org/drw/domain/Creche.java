@@ -2,6 +2,7 @@ package br.org.drw.domain;
 
 import java.util.ArrayList;
 import java.util.List;
+import br.org.drw.domain.visitor.*;
 
 public class Creche {
     private String nome;
@@ -23,14 +24,11 @@ public class Creche {
     }
 
     public void imprimirMensalidades() {
+        Visitor visitor = new PrintVisitor();
+
         for(Mensalidade mensalidade: this.mensalidades) {
             System.out.println("<<-------------- Mensalidade --------------->>");
-            System.out.println(
-                "Valor: " + mensalidade.getValor() +
-                "\nNome do menor: " + mensalidade.getMenor().getNome() +
-                "\nNome do profissional: " + mensalidade.getProfissionalResponsavel().getNome() +
-                "\nData de pagamento: " + mensalidade.getDataPagamento().toString()
-            );
+            mensalidade.imprimir(visitor);
         }
     }
 
@@ -72,5 +70,13 @@ public class Creche {
 
     public void setMensalidades(List<Mensalidade> mensalidades) {
         this.mensalidades = mensalidades;
+    }
+
+    public float getValorMensalidade() {
+        return valorMensalidade;
+    }
+
+    public void setValorMensalidade(float valorMensalidade) {
+        this.valorMensalidade = valorMensalidade;
     }
 }

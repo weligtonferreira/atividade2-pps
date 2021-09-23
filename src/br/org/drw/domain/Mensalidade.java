@@ -1,6 +1,9 @@
 package br.org.drw.domain;
 
+import br.org.drw.domain.visitor.Visitor;
+
 import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
 import java.util.List;
 import java.util.Random;
 
@@ -28,6 +31,18 @@ public class Mensalidade {
 	public void confirmarPagamento(List<Mensalidade> mensalidades){
 		this.setDataPagamento(LocalDate.now());
 		mensalidades.add(this);
+	}
+
+	public void imprimir(Visitor visitor) {
+		System.out.println("Id: " + this.getId());
+		System.out.println("Valor: " + this.getValor());
+		System.out.println("----------------  Pagamento  ----------------");
+		this.getPagamento().accept(visitor);
+		System.out.println("Data pagamento: " + this.getDataPagamento().toString());
+		System.out.println("----------------    Menor    ----------------");
+		this.menor.imprimirMenor();
+		System.out.println("---------------- Profissional ---------------");
+		this.profissionalResponsavel.imprimir();
 	}
 
 	public int getId() {

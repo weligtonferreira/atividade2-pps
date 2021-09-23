@@ -33,7 +33,7 @@ public class Main {
 		creche.setMenor(menor);
 
 		Mensalidade mensalidade = creche.gerarMensalidade(menor);
-
+		mensalidade.pagar(new PagamentoAVista(creche.getValorMensalidade()));
 		mensalidade.confirmarPagamento(creche.getMensalidades());
 
 		creche.imprimirMensalidades();

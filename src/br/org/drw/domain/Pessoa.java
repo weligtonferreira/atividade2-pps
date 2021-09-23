@@ -1,6 +1,7 @@
 package br.org.drw.domain;
 
 import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
 import java.util.Random;
 
 public class Pessoa {
@@ -19,6 +20,17 @@ public class Pessoa {
         this.dataNasc = dataNasc;
         this.endereco = endereco;
 	}
+
+    public String nomeCompleto() {
+        return this.nome + " " + this.sobrenome;
+    }
+
+    public void imprimir() {
+        System.out.println("Id: " + this.getId());
+        System.out.println("Nome: " + this.nomeCompleto());
+        System.out.println("Data de nascimento: " + this.getDataNasc().format(DateTimeFormatter.ISO_DATE));
+        this.getEndereco().imprimir();
+    }
 
     public int getId() {
         return id;

@@ -13,6 +13,11 @@ public class Menor extends Pessoa {
 		this.matricula = randomizador.nextInt(100);
 	}
 
+	public void imprimirMenor() {
+		this.imprimir();
+		System.out.println("Matrícula: " + this.matricula);
+	}
+
 	public int getMatricula() {
 		return matricula;
 	}
