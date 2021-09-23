@@ -10,15 +10,28 @@ public class Creche {
     private List<Mensalidade> mensalidades;
     private float valorMensalidade;
 
-    public Creche (String nome) {
+    public Creche (String nome, float valorMensalidade) {
         this.nome = nome;
         this.menores = new ArrayList<>();
         this.profissionais = new ArrayList<>();
         this.mensalidades = new ArrayList<>();
+        this.valorMensalidade = valorMensalidade;
     }
 
     public Mensalidade gerarMensalidade(Menor menor) {
         return new Mensalidade(this.valorMensalidade, menor, menor.getProfissionalResponsavel());
+    }
+
+    public void imprimirMensalidades() {
+        for(Mensalidade mensalidade: this.mensalidades) {
+            System.out.println("<<-------------- Mensalidade --------------->>");
+            System.out.println(
+                "Valor: " + mensalidade.getValor() +
+                "\nNome do menor: " + mensalidade.getMenor().getNome() +
+                "\nNome do profissional: " + mensalidade.getProfissionalResponsavel().getNome() +
+                "\nData de pagamento: " + mensalidade.getDataPagamento().toString()
+            );
+        }
     }
 
     public String getNome() {
@@ -33,12 +46,20 @@ public class Creche {
         return menores;
     }
 
+    public void setMenor(Menor menor) {
+        this.menores.add(menor);
+    }
+
     public void setMenores(List<Menor> menores) {
         this.menores = menores;
     }
 
     public List<Profissional> getProfissionais() {
         return profissionais;
+    }
+
+    public void setProfissional(Profissional profissional) {
+        this.profissionais.add(profissional);
     }
 
     public void setProfissionais(List<Profissional> profissionais) {

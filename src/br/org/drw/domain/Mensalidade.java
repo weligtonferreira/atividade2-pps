@@ -1,17 +1,17 @@
 package br.org.drw.domain;
 
+import java.time.LocalDate;
+import java.util.List;
 import java.util.Random;
 
 public class Mensalidade {
 	private int id;
 	private float valor;
-	private Pagamento pagamento;
-	/*
-	 * Implementar a classe abstrata Pagamento e as sub-classes concretas PagamentoAVista e PagamentoAPrazo
-	 */
 	private Menor menor;
 	private Profissional profissionalResponsavel;
-	
+	private LocalDate dataPagamento;
+	private Pagamento pagamento;
+
 	public Mensalidade(float valor, Menor menor, Profissional profissionalResponsavel) {
 		Random randomizador = new Random();
 	    int numeroRandomizado = randomizador.nextInt(100);
@@ -19,6 +19,15 @@ public class Mensalidade {
 		this.valor = valor;
 		this.menor = menor;
 	    this.profissionalResponsavel = profissionalResponsavel;
+	}
+
+	public void pagar(Pagamento pagamento) {
+		this.setPagamento(pagamento);
+	}
+
+	public void confirmarPagamento(List<Mensalidade> mensalidades){
+		this.setDataPagamento(LocalDate.now());
+		mensalidades.add(this);
 	}
 
 	public int getId() {
@@ -37,14 +46,6 @@ public class Mensalidade {
 		this.valor = valor;
 	}
 
-	public Pagamento getPagamento() {
-		return pagamento;
-	}
-
-	public void setPagamento(Pagamento pagamento) {
-		this.pagamento = pagamento;
-	}
-
 	public Menor getMenor() {
 		return menor;
 	}
@@ -60,4 +61,21 @@ public class Mensalidade {
 	public void setProfissionalResponsavel(Profissional profissionalResponsavel) {
 		this.profissionalResponsavel = profissionalResponsavel;
 	}
+
+	public LocalDate getDataPagamento() {
+		return dataPagamento;
+	}
+
+	public void setDataPagamento(LocalDate dataPagamento) {
+		this.dataPagamento = dataPagamento;
+	}
+
+	public Pagamento getPagamento() {
+		return pagamento;
+	}
+
+	public void setPagamento(Pagamento pagamento) {
+		this.pagamento = pagamento;
+	}
+
 }
