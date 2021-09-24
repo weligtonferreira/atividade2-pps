@@ -7,7 +7,7 @@ public class Menor extends Pessoa {
 	private int matricula;
 	private Profissional profissionalResponsavel;
 
-	public Menor(String nome, String sobrenome, LocalDate dataNasc, Endereco endereco, int matricula) {
+	public Menor(String nome, String sobrenome, LocalDate dataNasc, Endereco endereco) {
 		super(nome, sobrenome, dataNasc, endereco);
 		Random randomizador = new Random();
 		this.matricula = randomizador.nextInt(100);

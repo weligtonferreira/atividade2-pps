@@ -28,8 +28,10 @@ public class Pessoa {
     public void imprimir() {
         System.out.println("Id: " + this.getId());
         System.out.println("Nome: " + this.nomeCompleto());
-        System.out.println("Data de nascimento: " + this.getDataNasc().format(DateTimeFormatter.ISO_DATE));
-        this.getEndereco().imprimir();
+        if (this.getDataNasc() != null)
+            System.out.println("Data de nascimento: " + this.getDataNasc().format(DateTimeFormatter.ISO_DATE));
+        if (this.getEndereco() != null)
+            this.getEndereco().imprimir();
     }
 
     public int getId() {
